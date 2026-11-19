@@ -179,7 +179,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 text-sm text-white/40">
             <a
-              href="#"
+              href="/aura/privasi"
               className="hover:text-white/70 transition-colors duration-300"
             >
               Kebijakan Privasi
