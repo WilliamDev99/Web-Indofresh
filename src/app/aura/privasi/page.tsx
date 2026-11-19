@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import PageHeader from "@/components/PageHeader";
 
 // ---------------------------------------------------------------------------
 // TODO: Isi data di bawah ini sebelum halaman dipublikasikan / didaftarkan
@@ -11,7 +10,7 @@ const CONTACT_EMAIL = "[email-privasi@domain-anda]";
 const EFFECTIVE_DATE = "19 November 2026";
 
 export const metadata: Metadata = {
-  title: "Kebijakan Privasi AURA",
+  title: "Kebijakan Privasi",
   description:
     "Kebijakan privasi aplikasi AURA, aplikasi kontrol orang tua yang melindungi anak dari bahaya di dunia digital secara terbuka, bukan mata-mata.",
 };
@@ -63,14 +62,14 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-28">
-      <h2 className="flex items-baseline gap-3 text-2xl font-bold text-gray-900 mb-4">
-        <span className="text-base font-semibold text-brand-green-600 tabular-nums">
+    <section id={id} className="scroll-mt-24">
+      <h2 className="flex items-baseline gap-3 text-2xl font-bold text-slate-900 mb-4">
+        <span className="text-base font-semibold text-violet-600 tabular-nums">
           {String(number).padStart(2, "0")}
         </span>
         {title}
       </h2>
-      <div className="space-y-4 text-gray-600 leading-relaxed">{children}</div>
+      <div className="space-y-4 text-slate-600 leading-relaxed">{children}</div>
     </section>
   );
 }
@@ -83,13 +82,13 @@ function DataCard({
   items: { label: string; detail: string }[];
 }) {
   return (
-    <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-6">
-      <h3 className="font-semibold text-gray-900 mb-4">{title}</h3>
+    <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-6">
+      <h3 className="font-semibold text-slate-900 mb-4">{title}</h3>
       <dl className="space-y-4">
         {items.map((item) => (
           <div key={item.label}>
-            <dt className="font-medium text-gray-800">{item.label}</dt>
-            <dd className="text-sm text-gray-600 mt-1">{item.detail}</dd>
+            <dt className="font-medium text-slate-800">{item.label}</dt>
+            <dd className="text-sm text-slate-600 mt-1">{item.detail}</dd>
           </div>
         ))}
       </dl>
@@ -102,7 +101,7 @@ function Bullets({ items }: { items: ReactNode[] }) {
     <ul className="space-y-2">
       {items.map((item, i) => (
         <li key={i} className="flex gap-3">
-          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-green-500" />
+          <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500" />
           <span>{item}</span>
         </li>
       ))}
@@ -113,27 +112,39 @@ function Bullets({ items }: { items: ReactNode[] }) {
 export default function AuraPrivacyPage() {
   return (
     <>
-      <PageHeader
-        badge="Aplikasi AURA"
-        title="Kebijakan"
-        titleHighlight="Privasi"
-        description="AURA adalah teman aman anak di dunia digital. Kebijakan ini menjelaskan data apa yang diproses, mengapa, dan bagaimana kami menjaganya — secara terbuka, bukan mata-mata."
-      />
-
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-500 mb-10">
-            Berlaku sejak <strong className="text-gray-700">{EFFECTIVE_DATE}</strong>
+      <div className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-violet-950 to-slate-950">
+        <div className="absolute -top-24 right-[-6rem] h-80 w-80 rounded-full bg-violet-500/25 blur-3xl" />
+        <div className="absolute -bottom-32 left-[-4rem] h-72 w-72 rounded-full bg-teal-400/15 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1 text-xs font-semibold text-violet-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
+            Aplikasi AURA
+          </span>
+          <h1 className="mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl">
+            Kebijakan Privasi
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-violet-100/75">
+            AURA adalah teman aman anak di dunia digital. Kebijakan ini
+            menjelaskan data apa yang diproses, mengapa, dan bagaimana kami
+            menjaganya — secara terbuka, bukan mata-mata.
           </p>
+          <p className="mt-8 text-sm text-violet-200/70">
+            Berlaku sejak{" "}
+            <strong className="font-semibold text-white">{EFFECTIVE_DATE}</strong>
+          </p>
+        </div>
+      </div>
 
+      <section className="py-14 lg:py-20 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid lg:grid-cols-[16rem_1fr] gap-12">
             {/* Daftar isi */}
             <aside className="hidden lg:block">
               <nav
                 aria-label="Daftar isi"
-                className="sticky top-28 rounded-2xl border border-gray-100 p-5"
+                className="sticky top-24 rounded-2xl border border-slate-100 p-5"
               >
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
                   Daftar isi
                 </p>
                 <ol className="space-y-1.5 text-sm">
@@ -141,9 +152,9 @@ export default function AuraPrivacyPage() {
                     <li key={s.id}>
                       <a
                         href={`#${s.id}`}
-                        className="flex gap-2 text-gray-600 hover:text-brand-green-700 transition-colors"
+                        className="flex gap-2 text-slate-600 hover:text-violet-700 transition-colors"
                       >
-                        <span className="tabular-nums text-gray-400">
+                        <span className="tabular-nums text-slate-400">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         {s.label}
@@ -164,27 +175,27 @@ export default function AuraPrivacyPage() {
                   berbahaya, AURA mengirim peringatan singkat ke HP orang tua.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-brand-green-100 bg-brand-green-50/60 p-6">
-                    <p className="font-semibold text-brand-green-800 mb-3">
+                  <div className="rounded-2xl border border-violet-100 bg-violet-50/60 p-6">
+                    <p className="font-semibold text-violet-800 mb-3">
                       AURA melakukan
                     </p>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-2 text-sm text-slate-700">
                       {doesList.map((item) => (
                         <li key={item} className="flex gap-2">
-                          <span aria-hidden className="text-brand-green-600">✓</span>
+                          <span aria-hidden className="text-violet-600">✓</span>
                           {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
-                    <p className="font-semibold text-gray-800 mb-3">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                    <p className="font-semibold text-slate-800 mb-3">
                       AURA tidak melakukan
                     </p>
-                    <ul className="space-y-2 text-sm text-gray-700">
+                    <ul className="space-y-2 text-sm text-slate-700">
                       {doesNotList.map((item) => (
                         <li key={item} className="flex gap-2">
-                          <span aria-hidden className="text-brand-orange-600">✕</span>
+                          <span aria-hidden className="text-rose-600">✕</span>
                           {item}
                         </li>
                       ))}
@@ -300,15 +311,15 @@ export default function AuraPrivacyPage() {
                   Setiap izin diminta secara terbuka, dengan penjelasan di layar,
                   dan hanya dipakai untuk fungsi yang disebutkan.
                 </p>
-                <div className="overflow-x-auto rounded-2xl border border-gray-100">
+                <div className="overflow-x-auto rounded-2xl border border-slate-100">
                   <table className="w-full text-sm">
-                    <thead className="bg-gray-50 text-left text-gray-700">
+                    <thead className="bg-slate-50 text-left text-slate-700">
                       <tr>
                         <th className="px-4 py-3 font-semibold">Izin</th>
                         <th className="px-4 py-3 font-semibold">Untuk apa</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
+                    <tbody className="divide-y divide-slate-100">
                       {[
                         [
                           "Akses notifikasi",
@@ -336,10 +347,10 @@ export default function AuraPrivacyPage() {
                         ],
                       ].map(([perm, purpose]) => (
                         <tr key={perm}>
-                          <td className="px-4 py-3 font-medium text-gray-800 align-top whitespace-nowrap">
+                          <td className="px-4 py-3 font-medium text-slate-800 align-top whitespace-nowrap">
                             {perm}
                           </td>
-                          <td className="px-4 py-3 text-gray-600">{purpose}</td>
+                          <td className="px-4 py-3 text-slate-600">{purpose}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -507,7 +518,7 @@ export default function AuraPrivacyPage() {
                       Mengirim email ke{" "}
                       <a
                         href={`mailto:${CONTACT_EMAIL}`}
-                        className="font-medium text-brand-green-700 underline underline-offset-2"
+                        className="font-medium text-violet-700 underline underline-offset-2"
                       >
                         {CONTACT_EMAIL}
                       </a>{" "}
@@ -533,28 +544,28 @@ export default function AuraPrivacyPage() {
 
               {/* 15. Kontak */}
               <Section id="kontak" number={15} title="Hubungi kami">
-                <div className="rounded-2xl border border-gray-100 bg-gray-50/60 p-6 space-y-1">
-                  <p className="font-semibold text-gray-900">{DEVELOPER_NAME}</p>
+                <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-6 space-y-1">
+                  <p className="font-semibold text-slate-900">{DEVELOPER_NAME}</p>
                   <p>
                     Email:{" "}
                     <a
                       href={`mailto:${CONTACT_EMAIL}`}
-                      className="font-medium text-brand-green-700 underline underline-offset-2"
+                      className="font-medium text-violet-700 underline underline-offset-2"
                     >
                       {CONTACT_EMAIL}
                     </a>
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-brand-orange-200 bg-brand-orange-50 p-6">
-                  <p className="font-semibold text-brand-orange-700 mb-2">
+                <div className="rounded-2xl border border-rose-200 bg-rose-50 p-6">
+                  <p className="font-semibold text-rose-700 mb-2">
                     Butuh bantuan darurat?
                   </p>
-                  <p className="text-sm text-gray-700 mb-3">
+                  <p className="text-sm text-slate-700 mb-3">
                     Jika anak berada dalam bahaya, jangan menunggu balasan email.
                     Hubungi layanan berikut:
                   </p>
-                  <ul className="space-y-1 text-sm text-gray-700">
+                  <ul className="space-y-1 text-sm text-slate-700">
                     <li>
                       <strong>SAPA 129</strong> (KemenPPPA) — telepon 129 atau
                       WhatsApp 08111-129-129
