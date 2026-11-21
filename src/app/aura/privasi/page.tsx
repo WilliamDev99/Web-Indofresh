@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { APP_ID, CONTACT_EMAIL, DEVELOPER_NAME } from "../_shared/config";
+import Link from "next/link";
+import {
+  APP_ID,
+  CONTACT_EMAIL,
+  DELETION_DAYS,
+  DEVELOPER_NAME,
+  RETENTION_AFTER_DELETE_DAYS,
+} from "../_shared/config";
 import {
   Bullets,
   ContactSummary,
@@ -8,12 +15,11 @@ import {
   DocHero,
   EmailLink,
   Section,
+  linkClass,
 } from "../_shared/doc";
 
 const LAST_UPDATED = "19 November 2026";
 const SERVER_LOCATION = "Singapura";
-const DELETION_DAYS = 7; // hari kerja untuk permintaan hapus lewat email
-const RETENTION_AFTER_DELETE_DAYS = 30;
 
 export const metadata: Metadata = {
   title: "Kebijakan Privasi",
@@ -263,6 +269,13 @@ export default function AuraPrivacyPage() {
 
         {/* 6 */}
         <Section id="hapus-akun" number={6} title="Menghapus akun dan data">
+          <p>
+            Panduan lengkap ada di halaman{" "}
+            <Link href="/aura/hapus-akun" className={linkClass}>
+              Hapus Akun &amp; Data
+            </Link>
+            .
+          </p>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-5">
               <p className="font-semibold text-slate-900 mb-2">Di aplikasi</p>

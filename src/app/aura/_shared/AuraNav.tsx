@@ -11,24 +11,26 @@ export default function AuraNav() {
       aria-label="Halaman AURA"
       className="flex gap-1 text-xs font-semibold sm:text-sm"
     >
-      {auraPages.map((page) => {
-        const active = pathname === page.href;
-        return (
-          <Link
-            key={page.href}
-            href={page.href}
-            aria-current={active ? "page" : undefined}
-            className={`rounded-full px-3 py-1.5 transition-colors ${
-              active
-                ? "bg-violet-50 text-violet-700"
-                : "text-slate-500 hover:text-slate-900"
-            }`}
-          >
-            <span className="sm:hidden">{page.short}</span>
-            <span className="hidden sm:inline">{page.label}</span>
-          </Link>
-        );
-      })}
+      {auraPages
+        .filter((page) => page.header !== false)
+        .map((page) => {
+          const active = pathname === page.href;
+          return (
+            <Link
+              key={page.href}
+              href={page.href}
+              aria-current={active ? "page" : undefined}
+              className={`rounded-full px-3 py-1.5 transition-colors ${
+                active
+                  ? "bg-violet-50 text-violet-700"
+                  : "text-slate-500 hover:text-slate-900"
+              }`}
+            >
+              <span className="sm:hidden">{page.short}</span>
+              <span className="hidden sm:inline">{page.label}</span>
+            </Link>
+          );
+        })}
     </nav>
   );
 }

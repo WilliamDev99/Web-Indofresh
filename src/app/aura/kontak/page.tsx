@@ -125,8 +125,8 @@ export default function AuraContactPage() {
                 <strong>Pengaturan → Hapus akun</strong>, atau kirim email
                 dengan judul “Hapus akun AURA” dari alamat email yang Anda pakai
                 untuk masuk. Lihat rinciannya di{" "}
-                <Link href="/aura/privasi#hapus-akun" className={linkClass}>
-                  Kebijakan Privasi
+                <Link href="/aura/hapus-akun" className={linkClass}>
+                  halaman Hapus Akun &amp; Data
                 </Link>
                 .
               </p>
