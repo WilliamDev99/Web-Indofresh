@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AuraNav from "./_shared/AuraNav";
+import { auraPages } from "./_shared/config";
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +32,15 @@ function AuraMark({ className = "h-8 w-8" }: { className?: string }) {
         </linearGradient>
       </defs>
       <rect width="64" height="64" rx="16" fill="url(#aura-mark)" />
-      <circle cx="32" cy="32" r="17" fill="none" stroke="#fff" strokeOpacity=".35" strokeWidth="3" />
+      <circle
+        cx="32"
+        cy="32"
+        r="17"
+        fill="none"
+        stroke="#fff"
+        strokeOpacity=".35"
+        strokeWidth="3"
+      />
       <circle cx="32" cy="32" r="9" fill="#fff" />
       <circle cx="32" cy="32" r="4" fill="#2dd4bf" />
     </svg>
@@ -52,9 +62,7 @@ export default function AuraLayout({
               AURA
             </span>
           </Link>
-          <span className="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">
-            Kebijakan Privasi
-          </span>
+          <AuraNav />
         </div>
       </header>
 
@@ -69,7 +77,18 @@ export default function AuraLayout({
               di dunia digital
             </span>
           </div>
-          <p>© {new Date().getFullYear()} AURA. Hak cipta dilindungi.</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {auraPages.map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="hover:text-slate-800 transition-colors"
+              >
+                {page.label}
+              </Link>
+            ))}
+            <span>© {new Date().getFullYear()} AURA</span>
+          </div>
         </div>
       </footer>
     </div>

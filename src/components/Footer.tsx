@@ -185,7 +185,7 @@ export default function Footer() {
               Kebijakan Privasi
             </a>
             <a
-              href="#"
+              href="/aura/syarat-layanan"
               className="hover:text-white/70 transition-colors duration-300"
             >
               Syarat & Ketentuan
