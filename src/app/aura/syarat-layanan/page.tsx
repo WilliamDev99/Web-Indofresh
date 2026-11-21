@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { APP_ID, CONTACT_EMAIL, DEVELOPER_NAME } from "../_shared/config";
+import { APP_ID, DEVELOPER_NAME } from "../_shared/config";
 import {
+  ContactSummary,
   Bullets,
   Callout,
   DocBody,
   DocHero,
-  EmailLink,
   Section,
   linkClass,
 } from "../_shared/doc";
@@ -271,14 +271,7 @@ export default function AuraTermsPage() {
 
         {/* 15 */}
         <Section id="kontak" number={15} title="Hubungi kami">
-          <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-6">
-            <p className="font-semibold text-slate-900">{DEVELOPER_NAME}</p>
-            {CONTACT_EMAIL && (
-              <p className="mt-1">
-                Email: <EmailLink />
-              </p>
-            )}
-          </div>
+          <ContactSummary />
         </Section>
       </DocBody>
     </>

@@ -1,5 +1,34 @@
 import type { ReactNode } from "react";
-import { CONTACT_EMAIL } from "./config";
+import Link from "next/link";
+import { CONTACT_EMAIL, CONTACT_PHONE, DEVELOPER_NAME } from "./config";
+
+/** Ringkasan kontak untuk bagian "Hubungi kami" di halaman dokumen. */
+export function ContactSummary() {
+  return (
+    <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-6 space-y-1">
+      <p className="font-semibold text-slate-900">{DEVELOPER_NAME}</p>
+      {CONTACT_EMAIL && (
+        <p>
+          Email: <EmailLink />
+        </p>
+      )}
+      <p>
+        Telepon / WhatsApp:{" "}
+        <a
+          href={`tel:${CONTACT_PHONE.tel}`}
+          className="font-medium text-violet-700 underline underline-offset-2"
+        >
+          {CONTACT_PHONE.display}
+        </a>
+      </p>
+      <p className="pt-2 text-sm">
+        <Link href="/aura/kontak" className={linkClass}>
+          Lihat halaman kontak →
+        </Link>
+      </p>
+    </div>
+  );
+}
 
 export type DocSection = { id: string; label: string };
 
@@ -10,8 +39,8 @@ export function DocHero({
   children,
 }: {
   title: string;
-  dateLabel: string;
-  date: string;
+  dateLabel?: string;
+  date?: string;
   children: ReactNode;
 }) {
   return (
@@ -29,10 +58,12 @@ export function DocHero({
         <div className="mt-5 max-w-2xl text-lg leading-relaxed text-violet-100/75">
           {children}
         </div>
-        <p className="mt-8 text-sm text-violet-200/70">
-          {dateLabel}{" "}
-          <strong className="font-semibold text-white">{date}</strong>
-        </p>
+        {date && (
+          <p className="mt-8 text-sm text-violet-200/70">
+            {dateLabel}{" "}
+            <strong className="font-semibold text-white">{date}</strong>
+          </p>
+        )}
       </div>
     </div>
   );

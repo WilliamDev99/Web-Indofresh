@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { APP_ID, CONTACT_EMAIL, DEVELOPER_NAME } from "../_shared/config";
-import { Bullets, DocBody, DocHero, EmailLink, Section } from "../_shared/doc";
+import {
+  Bullets,
+  ContactSummary,
+  DocBody,
+  DocHero,
+  EmailLink,
+  Section,
+} from "../_shared/doc";
 
 const LAST_UPDATED = "19 November 2026";
 const SERVER_LOCATION = "Singapura";
@@ -346,14 +353,7 @@ export default function AuraPrivacyPage() {
 
         {/* 9 */}
         <Section id="kontak" number={9} title="Hubungi kami">
-          <div className="rounded-2xl border border-slate-100 bg-slate-50/60 p-6">
-            <p className="font-semibold text-slate-900">{DEVELOPER_NAME}</p>
-            {CONTACT_EMAIL && (
-              <p className="mt-1">
-                Email: <EmailLink />
-              </p>
-            )}
-          </div>
+          <ContactSummary />
         </Section>
       </DocBody>
     </>
